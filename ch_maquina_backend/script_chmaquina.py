@@ -3,6 +3,8 @@ nueva_dictionary = {'nueva':['c','i','r','l']}
 uninitialized_variables = {'c':' ','i':0,'r':0,'l':0}
 items_list = []
 variables_list = []
+instruction_list = []
+label_list = []
 
 def validate_type(type,value):
 	try:
@@ -44,10 +46,17 @@ def open_file_ch(path):
 						print('Type error')
 				else: 
 					print('Existe un error con el tipo de carcater: ', line_[2])
+			elif line_[0].lower() == 'etiqueta':
+				label_dict = {'name':line_[1].lower(),'pos':line_[2].rjust(5,'0')}
+				label_list.append(label_dict)
+			elif line_[0].lower() not in ['etiqueta','//']:
+				inst_dict = {'Pos':str(j).rjust(5,'0'),'Instruccion':line.rstrip()}
+				instruction_list.append(inst_dict)
 			line_dict = {'Pos':str(j).rjust(5,'0'),'Instruccion':line.rstrip()}
 			items_list.append(line_dict)
 		else:
 			print('Existe un error de sintaxis con la palabra reservada: ', line_[0])
 			break
 	file_ch.close()
-	return {'content': items_list,'variables':variables_list}
+	file_list.close()
+	return {'content': items_list,'variables':variables_list,'instructions':instruction_list,'labels':label_list}

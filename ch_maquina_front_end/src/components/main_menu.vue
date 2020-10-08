@@ -39,7 +39,7 @@ export default {
             .then(response =>{
                 //console.log(response.data.content)
                 bus.$emit('memoryTable',response.data.content);
-                bus.$emit('variableTable',response.data.variables);
+                bus.$emit('infoTable',response.data);
             }).catch(e =>{
                 console.log(e)
             })

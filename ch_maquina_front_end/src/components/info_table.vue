@@ -9,12 +9,14 @@
 					<b-col><h6>Pos</h6></b-col>
 	    			<b-col><h6>Inst</h6></b-col>
     			</b-row>
-				<div v-for = "n in 15">
-			    	<b-row class = "row_num_">
-					    <b-col class = "col_num_">{{n}}</b-col>
-					    <b-col class = "col_num_">inst</b-col>
-				    </b-row>
-			    </div>
+    			<div style="height: 500px; overflow-y: scroll;">
+					<div v-for = "inst in instructions">
+				    	<b-row class = "row_num_">
+						    <b-col class = "col_num_">{{inst['Pos']}}</b-col>
+						    <b-col class = "col_num_">{{inst['Instruccion']}}</b-col>
+					    </b-row>
+				    </div>
+				</div>
 			</b-col>
 			<b-col>
 				<b-row>
@@ -34,13 +36,13 @@
 					<b-col><h4>Etiquetas</h4></b-col>
     			</b-row>
 				<b-row>
-					<b-col><h6>Pos</h6></b-col>
-	    			<b-col><h6>Etiqueta</h6></b-col>
+					<b-col><h6>Inst</h6></b-col>
+	    			<b-col><h6>Pos</h6></b-col>
     			</b-row>
-    			<div v-for = "n in 5">
+    			<div v-for = "label in labels">
 			    	<b-row class = "row_num_lab">
-					    <b-col class = "col_num_lab">{{n}}</b-col>
-					    <b-col class = "col_num_lab">label</b-col>
+					    <b-col class = "col_num_lab">{{label['name']}}</b-col>
+					    <b-col class = "col_num_lab">{{label['pos']}}</b-col>
 				    </b-row>
 			    </div>
 			</b-col>
@@ -54,12 +56,16 @@ import {bus} from '../main'
 export default {
     data() {
       return {
-      	variables:[]
+      	variables:[],
+      	labels:[],
+      	instructions:[]
       }
     },
     created (){
-      bus.$on('variableTable',(data) =>{
-        this.variables = data;
+      bus.$on('infoTable',(data) =>{
+        this.variables = data.variables;
+        this.labels = data.labels;
+        this.instructions = data.instructions;
       })
     }
   }
@@ -69,7 +75,6 @@ export default {
 .col_num_var{
   padding: 0.05rem;
   text-align: center;
-  border: 1px solid #ccc;
 }
 
 .row_num_var:hover {
@@ -79,7 +84,6 @@ export default {
 .col_num_lab{
   padding: 0.05rem;
   text-align: center;
-  border: 1px solid #ccc;
 }
 
 .row_num_lab:hover {
@@ -87,9 +91,8 @@ export default {
 }
 
 .col_num_{
-  padding: 0.05rem;
+  padding: 0.01rem;
   text-align: center;
-  border: 1px solid #ccc;
 }
 
 .row_num_:hover {
