@@ -7,7 +7,7 @@
 		    <b-col><b-button size="mg" variant="outline-primary" v-on:click="uploadFile">Cargar</b-button></b-col>
 		    <b-col><b-button size="mg" variant="outline-success" v-on:click="executeFile">Ejecutar</b-button></b-col>
 		    <b-col><b-button size="mg" variant="outline-warning">Pausar</b-button></b-col>
-		    <b-col><b-button size="mg" variant="outline-light">Paso a paso</b-button></b-col>
+		    <b-col><b-button size="mg" variant="outline-light" v-on:click="executeFileStepByStep">Paso a paso</b-button></b-col>
 		    <b-col><b-button size="mg" variant="outline-danger" onclick = "window.close()">Apagar</b-button></b-col>
 		    <b-col><b-button size="mg" variant="outline-info" onclick = "window.location.reload()">Reiniciar</b-button></b-col>
 		</b-row>
@@ -17,6 +17,7 @@
 <script>
 import axios from 'axios'
 import execute from '../JavaScript/execute.js'
+import stepByStep from '../JavaScript/stepByStep.js'
 
 export default {
     data() {
@@ -48,6 +49,9 @@ export default {
         executeFile() {
             //console.log(this.$store.state.instructions);
             execute(this.$store.state.instructions);
+        },
+        executeFileStepByStep(){
+            stepByStep(this.$store.state.instructions);
         }
     }
   }

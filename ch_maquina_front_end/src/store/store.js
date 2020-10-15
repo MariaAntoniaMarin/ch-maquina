@@ -80,6 +80,9 @@ export const store = new Vuex.Store({
 		},
 		variableValue: (state) => (varName) => {
 			return state.variables.find(variable => variable.name == varName)
+		},
+		acumuladorValue: state =>{
+			return state.acumulador
 		}
 
 	}

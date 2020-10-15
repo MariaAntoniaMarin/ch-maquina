@@ -1,7 +1,8 @@
 import * as functions from './functions.js'
 
-function execute(instructions){
-	for (var i in instructions) {
+function stepByStep(instructions){
+	var band = true;
+	for (var i in instructions){
 		var row = instructions[i].instruccion.split(' ');
 		switch(row[0]){
 			case 'cargue':
@@ -33,7 +34,10 @@ function execute(instructions){
 				functions.lea(row[1],value);
 				break;
 		}
-		wait(1000)
+		wait(3000)
+		band = window.confirm("Desea continuar con la ejecucion?");
+		if (band == false) {break;}
+		console.log(band)
 	}
 }
 
@@ -44,4 +48,4 @@ function wait(ms){
 	while(d2-d < ms);
 }
 
-export default execute;
+export default stepByStep;

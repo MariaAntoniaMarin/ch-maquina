@@ -28,7 +28,7 @@
   export default{
     computed:{
       acumulador(){
-        return this.$store.state.acumulador;
+        return this.$store.getters.acumuladorValue;
       },
       monitor(){
         return this.$store.state.monitor;
