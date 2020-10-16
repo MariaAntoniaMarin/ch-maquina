@@ -12,8 +12,8 @@ sume m
 almacene respuesta
 cargue intermedia
 vayasi itere fin
-etiqueta itere 8 
-etiqueta fin 22
+etiqueta itere 7 
+etiqueta fin 21
 etiqueta principio 1
 muestre resultado 
 muestre respuesta

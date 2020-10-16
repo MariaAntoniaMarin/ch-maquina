@@ -1,7 +1,8 @@
 import * as functions from './functions.js'
 
 function execute(instructions){
-	for (var i in instructions) {
+	let i =0;
+	while ( i < instructions.length) {
 		var row = instructions[i].instruccion.split(' ');
 		switch(row[0]){
 			case 'cargue':
@@ -32,8 +33,30 @@ function execute(instructions){
 				var value = prompt("Por favor ingrese el valor para la variable: " + row[1], 2);
 				functions.lea(row[1],value);
 				break;
+			case 'vayasi':
+				var index = functions.vayasi(row[1],row[2]);
+				console.log(index)
+				if (!isNaN(index)){
+					i = index - 1;
+				}
+				break;
+			case 'vaya':
+				var index = functions.vaya(row[1]);
+				i = index - 1;
+				break;
+			case 'Y':
+				functions.Y(row[1],row[2],row[3]);
+				break;
+			case 'O':
+				functions.O(row[1],row[2],row[3]);
+				break;
+			case 'NO':
+				functions.NO(row[1],row[2]);
+				break;
 		}
-		wait(1000)
+		//wait(1000)
+		console.log(i)
+		i++;
 	}
 }
 

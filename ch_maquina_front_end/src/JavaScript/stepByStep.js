@@ -2,7 +2,8 @@ import * as functions from './functions.js'
 
 function stepByStep(instructions){
 	var band = true;
-	for (var i in instructions){
+	let i =0;
+	while (i < instructions.length){
 		var row = instructions[i].instruccion.split(' ');
 		switch(row[0]){
 			case 'cargue':
@@ -33,11 +34,34 @@ function stepByStep(instructions){
 				var value = prompt("Por favor ingrese el valor para la variable: " + row[1], 2);
 				functions.lea(row[1],value);
 				break;
+			case 'vayasi':
+				var index = functions.vayasi(row[1],row[2]);
+				if (!isNaN(index)){
+					i = index - 1;
+				}
+				break;
+			case 'vaya':
+				var index = functions.vaya(row[1]);
+				i = index - 1;
+				break;
+			case 'Y':
+				functions.Y(row[1],row[2],row[3]);
+				break;
+			case 'O':
+				functions.O(row[1],row[2],row[3]);
+				break;
+			case 'NO':
+				functions.NO(row[1],row[2]);
+				break;
 		}
-		wait(3000)
+		wait(100)
 		band = window.confirm("Desea continuar con la ejecucion?");
-		if (band == false) {break;}
-		console.log(band)
+		if (band == false) {
+			i = instructions.length;
+		}
+		else{
+			i++;
+		}
 	}
 }
 

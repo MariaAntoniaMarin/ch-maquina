@@ -18,7 +18,7 @@ vayasi itere cero
 etiqueta itere 19
 etiqueta cero 36
 etiqueta fin 41
-//termine
+// termine
 muestre resultado
 muestre respuesta
 imprima resultado

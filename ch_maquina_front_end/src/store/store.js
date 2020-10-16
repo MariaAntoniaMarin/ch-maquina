@@ -52,28 +52,7 @@ export const store = new Vuex.Store({
 			state.printer.paper = data;
 		}
 	},
-	actions: {
-		changeVariable: ({commit},data) => {
-			setTimeout(()=>{
-				commit('changeVariableValue',data);
-			},50)
-		},
-		changeAcumulador: ({commit},data) => {
-			setTimeout(()=>{
-				commit('changeAcumuladorValue',data);
-			},50)
-		},
-		changeMonitor: ({commit},data) => {
-			setTimeout(()=>{
-				commit('changeMonitorValue',data);
-			},50)
-		},
-		changePrinter: ({commit},data) => {
-			setTimeout(()=>{
-				commit('changePrinterValue',data);
-			},50)
-		}
-	},
+	actions: {},
 	getters: {
 		variablesTable: state =>{
 			return state.variables
@@ -83,7 +62,13 @@ export const store = new Vuex.Store({
 		},
 		acumuladorValue: state =>{
 			return state.acumulador
+		},
+		labelValue: (state) => (name) =>{
+			return state.labels.find(label => label.name == name)
+		},
+		instruccionIndex: (state) => (pos) =>{
+			const instruction = state.instructions.find(instruction => instruction.pos == pos);
+			return state.instructions.indexOf(instruction);
 		}
-
 	}
 });

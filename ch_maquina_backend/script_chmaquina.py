@@ -40,7 +40,7 @@ def open_file_ch(path):
 					except IndexError:
 						line_.append(uninitialized_variables.get(line_[2].lower()))
 					if character_type(line_[2].lower(),line_[3]) != None:
-						var_dict = {'name':line_[1].lower(),'value':character_type(line_[2].lower(),line_[3])}
+						var_dict = {'name':line_[1],'value':character_type(line_[2].lower(),line_[3])}
 						variables_list.append(var_dict)
 					else:
 						print('Type error')
