@@ -47,8 +47,8 @@ export default {
             })
     	},
         executeFile() {
-            //console.log(this.$store.state.instructions);
             execute(this.$store.state.instructions);
+            //console.log(this.$store.state.monitor)
         },
         executeFileStepByStep(){
             stepByStep(this.$store.state.instructions);

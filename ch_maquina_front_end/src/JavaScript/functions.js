@@ -24,12 +24,12 @@ function multiplique(varName){
 
 function muestre(varName){
 	const value = store.getters.variableValue(varName);
-	store.commit('changeMonitorValue',value.value);
+	store.commit('addMonitorValue',value.value);
 }
 
 function imprima(varName){
 	const value = store.getters.variableValue(varName);
-	store.commit('changePrinterValue',value.value);
+	store.commit('addPrinterValue',value.value);
 }
 
 function sume(varName){
@@ -72,7 +72,6 @@ function vaya(labelName){
 function Y(varName1,varName2,varName3){
 	const value1 = store.getters.variableValue(varName1);
 	const value2 = store.getters.variableValue(varName2);
-	//const newValue = value1 && value2;
 	const data = {'name':varName3,'value':value1.value && value2.value};
 	store.commit('changeVariableValue',data);
 }

@@ -55,7 +55,6 @@ function execute(instructions){
 				break;
 		}
 		//wait(1000)
-		console.log(i)
 		i++;
 	}
 }

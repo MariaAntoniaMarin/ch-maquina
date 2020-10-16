@@ -8,15 +8,26 @@
 	  	</b-row>
 	  	<b-row>
 	  		<b-img src="https://img.icons8.com/cotton/2x/monitor.png" alt="Center image"></b-img>
-	  		<div class="monitor_text">{{monitor.screen}}</div>
+	  		<div class="monitor_text">
+          <div v-for = "mon in monitor">
+            <b-row>
+              <b-col>{{mon.screen}}</b-col>
+            </b-row>
+          </div>
+        </div>
 	  	</b-row>
       <b-row>
   	  	<b-col><b-button squared>Imprimir</b-button></b-col>
-        <b-col><b-button squared>M. Memoria</b-button></b-col>
       </b-row>
 	  	<b-row>
-	  		<b-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMji3dP1Ox9xrrxroFYtfq1b-ugg3s8a7fLw&usqp=CAU" alt="Center image"></b-img>
-	  		<div class="printer_text">{{printer.paper}}</div>
+	  		<b-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMji3dP1Ox9xrrxroFYtfq1b-ugg3s8a7fLw&usqp=CAU" width="250" alt="Center image"></b-img>
+	  		<div class="printer_text">
+          <div v-for="print in printer">
+            <b-row>
+              <b-col>{{print.paper}}</b-col>
+            </b-row>
+          </div>
+        </div>
 	  	</b-row>
 	  </b-col>
     </div>
@@ -45,9 +56,8 @@
 /* acumulador */
 .acumulador_text {
   position: absolute;
-  top: 14.3%;
+  top: 14%;
   left: 8%;
-  background-color: white;
   font-weight: 900;
   color: black;
   font-size: 170%;
@@ -61,14 +71,16 @@
   font-weight: bold;
   color: #2F4F4F;
   font-size: 100%;
+  text-align: left;
 }
 
 .printer_text {
   position: absolute;
-  top: 88%;
-  left: 17%;
+  top: 85.7%;
+  left: 18.7%;
   font-weight: bold;
   color: #2F4F4F;
   font-size: 100%;
+  text-align: left;
 }
 </style>

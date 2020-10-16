@@ -26,8 +26,8 @@ export const store = new Vuex.Store({
 			{'pos':'0003','instruccion':'instr3'}
 		],
 		acumulador: {'value':0},
-		monitor: {'screen':'CH Maquina'},
-		printer: {'paper':'Hola :)'}
+		monitor: [],
+		printer: []
 	},
 	mutations: {
 		addData:(state, data) => {
@@ -45,11 +45,13 @@ export const store = new Vuex.Store({
 		changeAcumuladorValue:(state,data) => {
 			state.acumulador.value = data;
 		},
-		changeMonitorValue:(state,data) => {
-			state.monitor.screen = data;
+		addMonitorValue:(state,value) => {
+			const data = {'screen':value}
+			state.monitor.push(data);
 		},
-		changePrinterValue:(state,data) => {
-			state.printer.paper = data;
+		addPrinterValue:(state,value) => {
+			const data = {'paper':value}
+			state.printer.push(data);
 		}
 	},
 	actions: {},
